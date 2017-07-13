@@ -1,0 +1,68 @@
+<div class="page-content-wrapper">
+    <!-- BEGIN CONTENT BODY -->
+    <div class="page-content">
+        <!-- BEGIN PAGE HEAD-->
+        <div class="page-head">
+            <!-- BEGIN PAGE TITLE -->
+            <div class="page-title">
+                <h1>Events</h1>
+            </div>
+            <!-- END PAGE TITLE -->
+        </div>
+        <!-- END PAGE HEAD-->
+        <!-- BEGIN PAGE BASE CONTENT -->
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12">
+                    <!--<pre>{{events.events | json}}</pre>-->
+                </div>
+                <div class="col-md-12">
+                    <hr />
+                    <div class="col-lg-4 col-xs-12 col-sm-12" ng-repeat="event in events.events">
+                        <div class="portlet light portlet-fit bordered">
+                            <div class="portlet-body">
+                                <div class="cd-horizontal-timeline mt-timeline-horizontal">
+                                    <div class="events-content">
+                                        <ol style="list-style-type: none;">
+                                            <li class="selected">
+                                                <div class="mt-title">
+                                                    <h2 class="mt-content-title">{{event.name}}</h2>
+                                                </div>
+                                                <div class="mt-author">
+                                                    <div class="mt-avatar">
+                                                        <img ng-src="{{event.image}}" alt="{{event.name}}" style="height:150px; margin-bottom:10px;">
+                                                    </div>
+                                                    <div class="mt-author-name">
+                                                        <span>By: </span><span class="font-blue-madison" ng-bind="event.host"></span>
+                                                    </div>
+                                                    <div class="mt-author-datetime font-grey-mint text-right">{{event.date | date:medium}}</div>
+                                                    <div class="mt-author-datetime font-grey-mint text-right">{{event.time | timeline:event.duration}}</div>
+                                                    <div class="mt-author-datetime font-grey-mint text-right">{{event.address}}</div>
+                                                </div>
+                                                <br />
+                                                <div class="clearfix"></div>
+                                                <div class="mt-content border-grey-steel">
+                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod mi felis, aliquam at iaculis eleifend ipsum, at posuere augue. Pellentesque mi felis, aliquam at iaculis mi felis, aliquam at
+                                                        iaculis eu, onsectetur adipiscing elit finibus eu ex. Integer efficitur leo eget dolor tincidunt, et dignissim risus lacinia. Nam in egestas onsectetur adipiscing elit nunc. Suspendisse potenti</p>
+                                                    <a ng-click="events.downVote(event)" href="javascript:;" class="btn btn-circle btn-icon-only red" title="Down Vote">
+                                                        <span aria-hidden="true" class="icon-dislike"></span>
+                                                    </a>
+                                                    <a ng-click="events.upVote(event)" href="javascript:;" class="btn btn-circle btn-icon-only green" title="Up Vote">
+                                                        <span aria-hidden="true" class="icon-like"></span>
+                                                    </a>
+                                                </div>
+                                            </li>
+                                        </ol>
+                                    </div>
+                                    <!-- .events-content -->
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PAGE BASE CONTENT -->
+    </div>
+    <!-- END CONTENT BODY -->
+</div>

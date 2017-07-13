@@ -1,0 +1,26 @@
+/*Layout*/
+.page-logo a span {
+    margin: auto;
+    padding: 20px;
+    line-height: 65px;
+    font-size: 24px;
+}
+
+/*Form Validation*/
+.ng-invalid.ng-dirty {
+    border-color: red;
+}
+.ng-valid.ng-dirty {
+    border-color: green;
+}
+.valdr-message {
+    display: none;
+    margin-left: 27%;
+}
+.valdr-message.ng-dirty.ng-invalid.ng-touched {
+    display: inline;
+    color: red;
+}
+.strikethrough {
+    text-decoration: line-through;
+}
