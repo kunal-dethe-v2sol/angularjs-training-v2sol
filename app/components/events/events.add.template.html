@@ -1,67 +1,111 @@
 <div class="page-content-wrapper">
     <!-- BEGIN CONTENT BODY -->
     <div class="page-content">
-        <!-- BEGIN PAGE HEAD-->
-        <div class="page-head">
-            <!-- BEGIN PAGE TITLE -->
-            <div class="page-title">
-                <h1>Events</h1>
-            </div>
-            <!-- END PAGE TITLE -->
-        </div>
-        <!-- END PAGE HEAD-->
-        <!-- BEGIN PAGE BREADCRUMB -->
-<!--        <ul class="page-breadcrumb breadcrumb">
-            <li>
-                <a href="/app/events">Events</a>
-                <i class="fa fa-circle"></i>
-            </li>
-            <li>
-                <span class="active">Add</span>
-            </li>
-        </ul>-->
-        <!-- END PAGE BREADCRUMB -->
         <!-- BEGIN PAGE BASE CONTENT -->
-        <div class="container">
+        <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12">
-                    <!--<pre>{{events.events | json}}</pre>-->
-                </div>
-                <div class="col-md-12">
-                    <hr />
-                    <div class="col-md-4" ng-repeat="event in events.events">
-                        <div class="portlet light portlet-fit bordered">
-                            <div class="portlet-body">
-                                <div class="cd-horizontal-timeline mt-timeline-horizontal loaded" data-spacing="60">
-                                    <div class="events-content">
-                                        <ul>
-                                            <li class="selected">
-                                                <div class="mt-title">
-                                                    <h2 class="mt-content-title">{{event.name}}</h2>
-                                                </div>
-                                                <div class="mt-author">
-                                                    <div class="mt-avatar">
-                                                        <img ng-src="{{event.image}}" alt="{{event.name}}" style="width:50px; height:50px;">
-                                                    </div>
-                                                    <div class="mt-author-name">
-                                                        <a href="javascript:;" class="font-blue-madison" ng-bind="event.host"></a>
-                                                    </div>
-                                                    <div class="mt-author-datetime font-grey-mint">23 February 2014</div>
-                                                </div>
-                                                <div class="clearfix"></div>
-                                                <div class="mt-content border-grey-steel">
-                                                    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam euismod mi felis, aliquam at iaculis eleifend ipsum, at posuere augue. Pellentesque mi felis, aliquam at iaculis mi felis, aliquam at
-                                                        iaculis eu, onsectetur adipiscing elit finibus eu ex. Integer efficitur leo eget dolor tincidunt, et dignissim risus lacinia. Nam in egestas onsectetur adipiscing elit nunc. Suspendisse potenti</p>
-                                                    <a href="javascript:;" class="btn btn-circle dark btn-outline">Read More</a>
-                                                    <a href="javascript:;" class="btn btn-circle btn-icon-only green pull-right">
-                                                        <i class="fa fa-twitter"></i>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                        </ul>
+                    <div class="portlet light portlet-fit bordered">
+                        <div class="portlet-title">
+                            <div class="caption">
+                                <i class="icon-directions font-green hide"></i>
+                                <span class="caption-subject bold font-dark uppercase"> Add Event</span>
+                            </div>
+                        </div>
+                        <div class="portlet-body">
+                            <div class="form">
+                                <form name="eventsForm" class="form-horizontal" novalidate valdr-type="Event" ng-submit="eventsForm.$valid && events.addEvent(events.event)">
+                                    <div class="form-group" valdr-form-group>
+                                        <label class="col-md-3 control-label">Name<span class="required">*</span></label>
+                                        <div class="col-md-9">
+                                            <input ng-model="events.event.name" type="text" name="name" placeholder="Enter Name" class="form-control" id="name" maxlength="30" required="required" />
+                                        </div>
                                     </div>
-                                    <!-- .events-content -->
-                                </div>
+                                    <div class="form-group" valdr-form-group>
+                                        <label class="col-md-3 control-label">Date<span class="required">*</span></label>
+                                        <div class="col-md-9">
+                                            <input ng-model="events.event.date" type="text" name="date" placeholder="yyyy-mm-dd" class="form-control" id="date" maxlength="10"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group" valdr-form-group>
+                                        <label class="col-md-3 control-label">Time<span class="required">*</span></label>
+                                        <div class="col-md-9">
+                                            <input ng-model="events.event.time" type="text" name="time" placeholder="Enter Time" class="form-control" id="time" maxlength="8"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group" valdr-form-group>
+                                        <label class="col-md-3 control-label">Duration <small>(in hours)</small><span class="required">*</span></label>
+                                        <div class="col-md-9">
+                                            <select ng-model="events.event.duration" class="form-control" name="duration" id="duration" >
+                                                <option value="">-Select Duration-</option>
+                                                <option value="1">1</option>
+                                                <option value="2">2</option>
+                                                <option value="3">3</option>
+                                                <option value="4">4</option>
+                                                <option value="5">5</option>
+                                                <option value="6">6</option>
+                                                <option value="7">7</option>
+                                                <option value="8">8</option>
+                                                <option value="9">9</option>
+                                                <option value="10">10</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" valdr-form-group>
+                                        <label class="col-md-3 control-label">Image<span class="required">*</span></label>
+                                        <div class="col-md-9">
+                                            <input ng-model="events.event.image" type="url" name="image" placeholder="Enter Image Url" class="form-control" id="image" maxlength="250"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group" valdr-form-group>
+                                        <label class="col-md-3 control-label">Preview Image<span class="required">*</span></label>
+                                        <div class="col-md-9">
+                                            <img ng-src="{{events.event.image}}" style="height:180px; width:300px;" alt="" id="preview_image" />
+                                        </div>
+                                    </div>
+                                    <div class="form-group" valdr-form-group>
+                                        <label class="col-md-3 control-label">Host<span class="required">*</span></label>
+                                        <div class="col-md-9">
+                                            <input ng-model="events.event.host" type="text" name="host" placeholder="Enter Host of the event" class="form-control" id="host" maxlength="250"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group" valdr-form-group>
+                                        <label class="col-md-3 control-label">Address<span class="required">*</span></label>
+                                        <div class="col-md-9">
+                                            <input ng-model="events.event.address" type="text" name="address" placeholder="Enter Address" class="form-control" id="address" maxlength="250"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group" valdr-form-group>
+                                        <label class="col-md-3 control-label">Cost<span class="required">*</span></label>
+                                        <div class="col-md-9">
+                                            <input ng-model="events.event.cost" type="number" name="cost" placeholder="Enter Cost" class="form-control" id="cost"  />
+                                        </div>
+                                    </div>
+                                    <div class="form-group" valdr-form-group>
+                                        <label class="col-md-3 control-label">Currency<span class="required">*</span></label>
+                                        <div class="col-md-9">
+                                            <select ng-model="events.event.currency" class="form-control" name="currency" id="currency" >
+                                                <option value="">-Select Currency-</option>
+                                                <option value="$ ">USD</option>
+                                                <option value="Rs. ">INR</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                    <div class="form-group" valdr-form-group>
+                                        <label class="col-md-3 control-label">Details<span class="required">*</span></label>
+                                        <div class="col-md-9">
+                                            <textarea ng-model="events.event.details" name="details" placeholder="Enter Details" class="form-control" id="details" rows="10" columns="500" maxlength="5000" ></textarea>
+                                        </div>
+                                    </div>
+                                    <div class="form-actions fluid">
+                                        <div class="row">
+                                            <div class="col-md-offset-3 col-md-9">
+                                                <input ng-disabled="!eventsForm.$valid" name="submit" type="submit" id="submitbutton" class="btn green" value="Save">
+                                                <a ng-click="events.clearForm()" id="clear" class="btn btn-warning">Cancel</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div>

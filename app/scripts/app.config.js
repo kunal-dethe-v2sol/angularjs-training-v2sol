@@ -15,16 +15,20 @@
             .config(config);
     
     //Inject the dependencies if any.
-    config.$inject = ['$locationProvider', 'localStorageServiceProvider'];
+    config.$inject = ['$locationProvider', 'localStorageServiceProvider', 'valdrMessageProvider'];
 
     //Contructor function
-    function config($locationProvider, localStorageServiceProvider) {
+    function config($locationProvider, localStorageServiceProvider, valdrMessageProvider) {
         // use the HTML5 History API
         // required to remove # from the urls
         $locationProvider.html5Mode(true);
         
         //Sets a prefix for storing the data into localStorage
-        localStorageServiceProvider
-            .setPrefix('todo');
+        localStorageServiceProvider.setPrefix('eventsApp');
+        
+        //Common validation messages
+        valdrMessageProvider.addMessages({
+            'required': 'This field is required'
+        });
     }
 })();

@@ -11,14 +11,16 @@
 
     //Set the module name so that the below code will run within its scope.
     angular
-            .module('eventsApp')  //Do not remove the empty bracket from here. It is required.
+            .module('eventsApp')
             .run(run);
 
     //Inject the dependencies if any.
-    run.$inject = [];
+    run.$inject = ['valdrMessage'];
 
     //Contructor function
-    function run() {
+    function run(valdrMessage) {
         //Any code that needs to be run at the start of the application.
+        
+        valdrMessage.angularMessagesEnabled = true;
     }
 })();

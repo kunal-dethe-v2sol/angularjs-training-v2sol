@@ -31,7 +31,7 @@
                     controller: 'EventsController',
                     controllerAs: 'events'
                 })
-                .when('/events/add', {
+                .when('/events-add', {
                     templateUrl: 'components/events/events.add.template.html',
                     controller: 'EventsController',
                     controllerAs: 'events'
