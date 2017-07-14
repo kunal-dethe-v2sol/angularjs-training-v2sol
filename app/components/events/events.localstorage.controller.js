@@ -1,7 +1,7 @@
 /** 
  *   EventsApp
  * 
- *   This file includes the code for the EventsApp CRUD functionality.
+ *   This file includes the code for the EventsApp CRUD functionality using localStorageService service.
  *   This controller is loaded when the main route is loaded.
  *   Created on : 03 Jun, 2017, 7:06:25 PM
  *   Author     : Kunal Dethe
@@ -11,14 +11,14 @@
 
     //Set the module name so that the below code will run within its scope.
     angular
-            .module('eventsApp')
-            .controller('EventsController', EventsController);
+        .module('eventsApp')
+        .controller('EventsLocalStorageController', EventsLocalStorageController);
 
     //Inject the dependencies if any.
-    EventsController.$inject = ['$scope', 'localStorageService'];
+    EventsLocalStorageController.$inject = ['$scope', 'localStorageService'];
 
     //Contructor function
-    function EventsController($scope, localStorageService) {
+    function EventsLocalStorageController($scope, localStorageService) {
         var ctrl = this;
 
         //Variables
@@ -28,7 +28,7 @@
                 name: 'The Tripp - Thursday Live!',
                 date: '2017-07-13',
                 time: '08:30 PM',
-                duration: 3,  //hours
+                duration: 3, //hours
                 image: 'https://lh3.googleusercontent.com/KjTmUWO1UYov6MLS8NyyjXiue6nxzlc_BnxalVrzUT5XePCChu6rVhxA84bAdfOc6ZCBjF-x_BQCdhkbcPIELPzFpA=s731',
                 host: 'Hard Rock Cafe Andheri',
                 address: 'Hard Rock Cafe Andheri, Andheri, Mumbai',
@@ -42,7 +42,7 @@
                 name: 'Illusionist-Blvperd Typ3Records EP Release Supported By DeeperSecrets',
                 date: '2017-07-13',
                 time: '09:00 PM',
-                duration: 2,  //hours
+                duration: 2, //hours
                 image: 'https://lh3.googleusercontent.com/xRtTKBYKcSo7YfilZghvsVqnKKDAsewauLV9BZg7Weq_Kg9NNG-k5djewW8brkVNkkusb9Avxt6dFbICl07Igbna0Q=s711',
                 host: 'Deeper Secrets',
                 address: 'Khar Social, Khar, Mumbai',
@@ -56,7 +56,7 @@
                 name: 'Ballet With Raindrops ~ Painting Party',
                 date: '2017-07-13',
                 time: '03:00 PM',
-                duration: 2,  //hours
+                duration: 2, //hours
                 image: 'https://lh3.googleusercontent.com/k4Yai-fGGndm94X7VEYpWymgQ00ciHXewSfmaSGM6_Z3_w69WnY_JGtj-tJgS85HwTgj8kIZqYHaDcqIY7U9Rw=s400',
                 host: 'Doolally Taproom',
                 address: 'Doolally Taproom, Colaba, Mumbai',
@@ -67,28 +67,25 @@
                 downVoteCount: 0
             }
         ];
-        ctrl.filter = '';
-        
+
         //Functions
         ctrl.init = init;
         ctrl.getEvents = getEvents;
         ctrl.addEvent = addEvent;
         ctrl.upVote = upVote;
         ctrl.downVote = downVote;
-        ctrl.deleteEvent = deleteEvent;
-        ctrl.deleteAllEvents = deleteAllEvents;
         ctrl.clearForm = clearForm;
-        
+
         //Initialization
         ctrl.init();
 
         //Function Definitions
         function init() {
-            if(ctrl.events.length === 0 && localStorageService.length() > 0) {
+            if (ctrl.events.length === 0 && localStorageService.length() > 0) {
                 ctrl.events = localStorageService.get('events');
-            } else if(localStorageService.length() > 0){
+            } else if (localStorageService.length() > 0) {
                 ctrl.events = localStorageService.get('events');
-            } else if(ctrl.events.length > 0){
+            } else if (ctrl.events.length > 0) {
                 localStorageService.set('events', ctrl.events);
             }
         }
@@ -98,38 +95,28 @@
         }
 
         function addEvent(event) {
-            //Setting dafault values;
+            //Setting default values;
             event.upVoteCount = 0;
             event.downVoteCount = 0;
-            
+
             //Add the new event in the array of event and the save it in the localStroage
             ctrl.events.push(event);
             localStorageService.set('events', ctrl.events);
-            
+
             //Resetting it back to empty
             ctrl.clearForm();
         }
-        
+
         function upVote(event) {
             event.upVoteCount++;
             localStorageService.set('events', ctrl.events);
         }
-        
+
         function downVote(event) {
             event.downVoteCount++;
             localStorageService.set('events', ctrl.events);
         }
 
-        function deleteEvent(event) {
-            ctrl.events.splice(ctrl.events.indexOf(event));
-            localStorageService.set('events', ctrl.events);
-        }
-
-        function deleteAllEvents() {
-            ctrl.events = [];
-            localStorageService.clearAll();
-        }
-        
         function clearForm() {
             ctrl.event = {};
             $scope.eventsForm.$setUntouched();

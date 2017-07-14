@@ -28,12 +28,14 @@
                 })
                 .when('/events', {
                     templateUrl: 'components/events/events.list.template.html',
-                    controller: 'EventsController',
+//                    controller: 'EventsLocalStorageController',
+                    controller: 'EventsHttpController',
                     controllerAs: 'events'
                 })
                 .when('/events-add', {
                     templateUrl: 'components/events/events.add.template.html',
-                    controller: 'EventsController',
+//                    controller: 'EventsLocalStorageController',
+                    controller: 'EventsHttpController',
                     controllerAs: 'events'
                 });
     }
