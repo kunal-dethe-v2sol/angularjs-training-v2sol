@@ -15,10 +15,14 @@
             .config(config);
 
     //Inject the dependencies if any.
-    config.$inject = ['valdrProvider'];
+    config.$inject = [
+        'valdrProvider'
+    ];
 
     //Contructor function
-    function config(valdrProvider) {
+    function config(
+        valdrProvider) {
+        
         valdrProvider.addConstraints({
             Event: {
                 cost: {

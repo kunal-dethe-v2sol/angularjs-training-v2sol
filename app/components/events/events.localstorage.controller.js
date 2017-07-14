@@ -1,7 +1,7 @@
 /** 
  *   EventsApp
  * 
- *   This file includes the code for the EventsApp CRUD functionality using localStorageService service.
+ *   This file includes the code for the Events CRUD functionality using localStorageService service.
  *   This controller is loaded when the main route is loaded.
  *   Created on : 03 Jun, 2017, 7:06:25 PM
  *   Author     : Kunal Dethe
@@ -15,10 +15,16 @@
         .controller('EventsLocalStorageController', EventsLocalStorageController);
 
     //Inject the dependencies if any.
-    EventsLocalStorageController.$inject = ['$scope', 'localStorageService'];
+    EventsLocalStorageController.$inject = [
+        '$scope',
+        'localStorageService'
+    ];
 
     //Contructor function
-    function EventsLocalStorageController($scope, localStorageService) {
+    function EventsLocalStorageController(
+        $scope,
+        localStorageService) {
+        
         var ctrl = this;
 
         //Variables

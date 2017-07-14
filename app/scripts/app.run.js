@@ -15,10 +15,14 @@
             .run(run);
 
     //Inject the dependencies if any.
-    run.$inject = ['valdrMessage'];
+    run.$inject = [
+        'valdrMessage'
+    ];
 
     //Contructor function
-    function run(valdrMessage) {
+    function run(
+        valdrMessage) {
+        
         //Any code that needs to be run at the start of the application.
         
         valdrMessage.angularMessagesEnabled = true;

@@ -12,15 +12,13 @@
     //Set the module name so that the below code will run within its scope.
     angular
             .module('eventsApp')
-            .filter('timeline', timeline);
+            .filter('atvTimeline', atvTimeline);
 
     //Inject the dependencies if any.
-    timeline.$inject = [];
+    atvTimeline.$inject = [];
 
     //Contructor function
-    function timeline() {
-        // In the return function, we must pass in a single parameter which will be the data we will work on.
-        // We have the ability to support multiple other parameters that can be passed into the filter optionally
+    function atvTimeline() {
         return function(input, duration) {
             var output = input;
             duration = parseInt(duration);

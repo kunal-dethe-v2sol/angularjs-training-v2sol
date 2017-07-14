@@ -12,13 +12,17 @@
     //Set the module name so that the below code will run within its scope.
     angular
             .module('eventsApp')
-            .directive('jqueryUniform', jqueryUniform);
+            .directive('avtJqueryUniform', avtJqueryUniform);
 
     //Inject the dependencies if any.
-    jqueryUniform.$inject = ['$timeout'];
+    avtJqueryUniform.$inject = [
+        '$timeout'
+    ];
 
     //Contructor function
-    function jqueryUniform($timeout) {
+    function avtJqueryUniform(
+        $timeout) {
+        
         return {
             restrict: 'A',
             require: 'ngModel',

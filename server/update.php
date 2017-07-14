@@ -9,7 +9,6 @@ $result = array(
 
 try {
     if($_SERVER['REQUEST_METHOD'] === 'PUT') {
-        $requestData = getRequestData();
         if(!empty($requestData->id)) {
             if(in_array($requestData->action, array('upVoteCount', 'downVoteCount'))) {
                 $action = $requestData->action;

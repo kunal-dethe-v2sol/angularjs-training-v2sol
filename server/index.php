@@ -9,8 +9,31 @@ $result = array(
 
 try {
     if($_SERVER['REQUEST_METHOD'] === 'GET') {
-        $events = json_decode(file_get_contents('data.json'));
-        $result['events'] = $events;
+        if(isset($_GET['id'])) {
+            if($id = (int) $_GET['id']) {
+                $events = json_decode(file_get_contents('data.json'), true);
+                if(!empty($events)) {
+                    $key = array_search($id, array_column($events, 'id'));
+                    if(!is_null($key)) {
+                        $result['status'] = 200;
+                        $result['message'] = 'OK';
+                        $result['event'] = $events[$key];
+                    } else {
+                        $result['status'] = 404;
+                        $result['message'] = 'Not Found 0';
+                    }
+                } else {
+                    $result['status'] = 404;
+                    $result['message'] = 'Not Found 1';
+                }
+            } else {
+                $result['status'] = 400;
+                $result['message'] = 'Bad Request';
+            }
+        } else {
+            $events = json_decode(file_get_contents('data.json'));
+            $result['events'] = $events;
+        }
     } elseif($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fields = array(
             'name',

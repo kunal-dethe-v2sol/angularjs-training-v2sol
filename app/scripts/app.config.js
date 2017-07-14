@@ -15,10 +15,20 @@
             .config(config);
     
     //Inject the dependencies if any.
-    config.$inject = ['$locationProvider', 'localStorageServiceProvider', 'valdrMessageProvider'];
+    config.$inject = [
+        '$locationProvider',
+        'localStorageServiceProvider',
+        'valdrMessageProvider',
+        '$interpolateProvider'
+    ];
 
     //Contructor function
-    function config($locationProvider, localStorageServiceProvider, valdrMessageProvider) {
+    function config(
+        $locationProvider,
+        localStorageServiceProvider,
+        valdrMessageProvider,
+        $interpolateProvider) {
+            
         // use the HTML5 History API
         // required to remove # from the urls
         $locationProvider.html5Mode(true);
@@ -30,5 +40,8 @@
         valdrMessageProvider.addMessages({
             'required': 'This field is required'
         });
+        
+        //To use [[ and ]] instead of {{ and }} as the sybmols to be used for angularjs expressions
+        //$interpolateProvider.startSymbol('[[').endSymbol(']]');
     }
 })();

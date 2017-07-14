@@ -22,6 +22,8 @@
         return {
             restrict: 'E',
             templateUrl: 'components/shared/footer/shared.footer.template.html',
+            controller: 'SharedFooterController',
+            controllerAs: 'footer'
         };
     }
 })();

@@ -61,7 +61,7 @@ License: You must have a valid license purchased only from themeforest(the above
     </head>
     <!-- END HEAD -->
 
-    <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo">
+    <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo" id="top">
         <!-- BEGIN HEADER -->
         <events-header></events-header>
         <!-- END HEADER -->
@@ -124,6 +124,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="../bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
         <script src="../bower_components/valdr/valdr.min.js"></script>
         <script src="../bower_components/valdr/valdr-message.min.js"></script>
+        <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
         <!-- /build -->
         
         <!-- build:remove -->
@@ -144,13 +145,14 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="components/shared/sidebar/left/shared.sidebar.left.directive.js"></script>
         
         <!--Footer-->
-        <!--<script src="components/shared/footer/shared.footer.controller.js"></script>-->
+        <script src="components/shared/footer/shared.footer.controller.js"></script>
         <script src="components/shared/footer/shared.footer.directive.js"></script>
         <!--end : shared-->
         
         <!--start : common-->
         <script src="components/common/directive/jquery-uniform/jquery.uniform.directive.js"></script>
         <script src="components/common/filter/timeline/timeline.filter.js"></script>
+        <script src="components/common/filter/ternary/ternary.filter.js"></script>
         <!--end : common-->
         
         <!--start : components-->

@@ -15,5 +15,6 @@
                 'ngRoute',
                 'LocalStorageModule',
                 'valdr',
+                'ngResource',
             ]);
 })();

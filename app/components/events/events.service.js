@@ -14,15 +14,28 @@
             .service('EventsDataService', EventsDataService);
 
     //Inject the dependencies if any.
-    EventsDataService.$inject = ['$http', '$q'];
+    EventsDataService.$inject = [
+        '$http',
+        '$q',
+        '$resource',
+    ];
 
     //Contructor function
-    function EventsDataService($http, $q) {
+    function EventsDataService(
+        $http,
+        $q,
+        $resource) {
+        
         var service = this;
         
+        //Variables
+        var resource = $resource('/server/index.php?id=:id', {id: '@id'});
+        
+        //Functions
         service.getEventsWithCallback = getEventsWithCallback;
         service.getEventsWithPromise = getEventsWithPromise;
 //        service.addEvent = addEvent;
+        service.getEventWithResource = getEventWithResource;
         service.updateEventVote = updateEventVote;
         
         function getEventsWithCallback(callback) {
@@ -62,6 +75,10 @@
             
             console.log('End of calling API');
             return deferred.promise;
+        }
+        
+        function getEventWithResource(id) {
+            return resource.get({id:id});
         }
         
         function updateEventVote(type, id) {

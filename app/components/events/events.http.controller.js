@@ -1,7 +1,7 @@
 /** 
  *   EventsApp
  * 
- *   This file includes the code for the EventsApp CRUD functionality using $http service.
+ *   This file includes the code for the Events CRUD functionality using $http service.
  *   This controller is loaded when the main route is loaded.
  *   Created on : 03 Jun, 2017, 7:06:25 PM
  *   Author     : Kunal Dethe
@@ -15,21 +15,37 @@
         .controller('EventsHttpController', EventsHttpController);
 
     //Inject the dependencies if any.
-    EventsHttpController.$inject = ['$scope', 'EventsDataService', '$log'];
+    EventsHttpController.$inject = [
+        '$scope',
+        'EventsDataService',
+        '$log',
+        '$locale',
+        '$routeParams'
+    ];
 
     //Contructor function
-    function EventsHttpController($scope, EventsDataService, $log) {
+    function EventsHttpController(
+        $scope,
+        EventsDataService,
+        $log,
+        $locale,
+        $routeParams) {
+        
         var ctrl = this;
 
+        console.log('$locale', $locale);
+        
         //Variables
         ctrl.event = {};
         ctrl.events = [];
 
         //Functions
         ctrl.init = init;
+        ctrl.getEvents = getEvents;
         ctrl.getEventsUsingCallback = getEventsUsingCallback;
         ctrl.getEventsUsingPromise = getEventsUsingPromise;
         ctrl.addEvent = addEvent;
+        ctrl.getEvent = getEvent;
         ctrl.upVote = upVote;
         ctrl.downVote = downVote;
         ctrl.clearForm = clearForm;
@@ -39,6 +55,10 @@
 
         //Function Definitions
         function init() {
+            
+        }
+        
+        function getEvents() {
 //            getEventsUsingCallback();
             getEventsUsingPromise();
         }
@@ -85,6 +105,20 @@
 
             //Resetting it back to empty
             ctrl.clearForm();
+        }
+
+        function getEvent() {
+            EventsDataService
+                .getEventWithResource($routeParams.id)
+                .$promise
+                .then(
+                    function(response) {
+                        ctrl.event = response.event;
+                    },
+                    function (response) {
+                        $log.error('getEventWithResource response error', response);
+                    }
+                );
         }
 
         function upVote(event) {

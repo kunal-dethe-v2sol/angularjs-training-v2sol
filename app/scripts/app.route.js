@@ -15,10 +15,14 @@
             .config(route);
 
     //Inject the dependencies if any.
-    route.$inject = ['$routeProvider'];
+    route.$inject = [
+        '$routeProvider'
+    ];
 
     //Contructor function
-    function route($routeProvider) {
+    function route(
+        $routeProvider) {
+        
         $routeProvider
                 .otherwise({
                     redirectTo: '/events'
@@ -35,6 +39,11 @@
                 .when('/events-add', {
                     templateUrl: 'components/events/events.add.template.html',
 //                    controller: 'EventsLocalStorageController',
+                    controller: 'EventsHttpController',
+                    controllerAs: 'events'
+                })
+                .when('/events-detail/:id', {
+                    templateUrl: 'components/events/events.detail.template.html',
                     controller: 'EventsHttpController',
                     controllerAs: 'events'
                 });
