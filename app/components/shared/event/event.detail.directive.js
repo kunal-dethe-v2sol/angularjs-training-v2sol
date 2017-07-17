@@ -12,7 +12,7 @@
     //Set the module name so that the below code will run within its scope.
     angular
             .module('eventsApp')
-            .directive('eventDetail', eventDetail);
+            .directive('eventsDetail', eventDetail);
 
     //Inject the dependencies if any.
     eventDetail.$inject = [];
