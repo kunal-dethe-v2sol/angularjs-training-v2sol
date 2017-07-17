@@ -16,15 +16,28 @@
 
     //Inject the dependencies if any.
     run.$inject = [
-        'valdrMessage'
+        'valdrMessage',
+        '$route',
+        '$rootScope'
     ];
 
     //Contructor function
     function run(
-        valdrMessage) {
+        valdrMessage,
+        $route,
+        $rootScope) {
         
         //Any code that needs to be run at the start of the application.
         
+        //Enable valdr to use the override of the error messages set from one 
+        //place in the whole application.
+        //The override is done in the app.config.php file
         valdrMessage.angularMessagesEnabled = true;
+        
+        //Common function that can be used in any .html view file for reloading 
+        //the angularjs page.
+        $rootScope.reload = function() {
+            $route.reload();
+        }
     }
 })();

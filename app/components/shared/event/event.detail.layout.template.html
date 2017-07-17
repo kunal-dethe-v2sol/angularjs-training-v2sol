@@ -1,0 +1,32 @@
+<div class="page-content-wrapper" ng-init="events.getEvent()">
+    <!-- BEGIN CONTENT BODY -->
+    <div class="page-content">
+        <!-- BEGIN PAGE HEAD-->
+        <div class="page-head">
+            <!-- BEGIN PAGE TITLE -->
+            <div class="page-title">
+                <h1>Event Detail</h1>
+            </div>
+            <!-- END PAGE TITLE -->
+        </div>
+        <!-- END PAGE HEAD-->
+        <!-- BEGIN PAGE BASE CONTENT -->
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-12">
+                    <hr />
+                    <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12">
+                        <event-detail 
+                            single-event="events.event"
+                            display-type="detail"
+                            up-vote="events.upVote(events.event)"
+                            down-vote="events.downVote(events.event)"></event-detail>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- END PAGE BASE CONTENT -->
+    </div>
+    <!-- END CONTENT BODY -->
+</div>

@@ -22,6 +22,9 @@ License: You must have a valid license purchased only from themeforest(the above
         <title>Events App</title>
         
         <!-- build:remove -->
+        <!-- This base tag should always be above all the included files like 
+             css, js, images, etc. so that the path is correctly understood by angularjs
+             when page is directly visited by entering the url in the browser. -->
         <!--<base href="/angularjs-training-v2sol/app/" />-->
         <!--<base href="/app/" />-->
         <base href="/app/" />
@@ -63,7 +66,7 @@ License: You must have a valid license purchased only from themeforest(the above
     </head>
     <!-- END HEAD -->
 
-    <body class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo" id="top">
+    <body ng-cloak class="page-container-bg-solid page-header-fixed page-sidebar-closed-hide-logo" id="top">
         <!-- BEGIN HEADER -->
         <events-header></events-header>
         <!-- END HEADER -->
@@ -134,6 +137,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="scripts/app.module.js"></script>
         <script src="scripts/app.config.js"></script>
         <script src="scripts/app.route.js"></script>
+        <script src="scripts/app.controller.js"></script>
         <script src="scripts/app.run.js"></script>
         <!--end : configuration-->
         
@@ -141,6 +145,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--Header-->
         <!--<script src="components/shared/header/shared.header.controller.js"></script>-->
         <script src="components/shared/header/shared.header.directive.js"></script>
+        <script src="components/shared/event/event.detail.directive.js"></script>
         
         <!--Sidebar-->
         <!--<script src="components/shared/sidebar/left/shared.sidebar.left.controller.js"></script>-->

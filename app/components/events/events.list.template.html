@@ -21,10 +21,10 @@
                                 <input class="form-control" type="text" ng-model="search" />
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Order By:</label>
-                                <select class="form-control" ng-model="order">
+                                <select class="form-control" ng-model="events.order">
                                     <option value="name">Name</option>
                                     <option value="duration">Duration</option>
                                     <option value="host">Host</option>
@@ -34,10 +34,10 @@
                                 </select>
                             </div>
                         </div>
-                        <div class="col-md-4">
+                        <div class="col-md-3">
                             <div class="form-group">
                                 <label>Limit To:</label>
-                                <select class="form-control" ng-model="limit">
+                                <select class="form-control" ng-model="events.limitTo">
                                     <option value="">All</option>
                                     <option value="3">3</option>
                                     <option value="2">2</option>
@@ -45,62 +45,22 @@
                                 </select>
                             </div>
                         </div>
+                        <div class="col-md-2">
+                            <div class="form-group">
+                                <label>Reset:</label>
+                                <button class="form-control btn btn-primary" ng-click="reload();">Reset</button>
+                            </div>
+                        </div>
                     </div>
                          
                     <hr />
                     <div class="col-lg-12 col-md-12 col-xs-12 col-sm-12" 
-                        ng-repeat="event in events.events | filter:search | orderBy:order | limitTo:limit">
-                        <div class="portlet light portlet-fit bordered">
-                            <div class="portlet-body">
-                                <div class="cd-horizontal-timeline mt-timeline-horizontal">
-                                    <div class="events-content">
-                                        <ol style="list-style-type: none;">
-                                            <li class="selected">
-                                                <div class="mt-title" style="margin-bottom:20px;">
-                                                    <h2 class="mt-content-title"><a ng-href="/app/events-detail/{{event.id}}">{{event.name}}</a></h2>
-                                                </div>
-                                                <div class="mt-author">
-                                                    <div class="row">
-                                                        <div class="col-md-6">
-                                                            <div class="mt-avatar">
-                                                                <img ng-src="{{event.image}}" alt="{{event.name}}" style="height:180px; width:300px; margin-bottom:10px;">
-                                                            </div>
-                                                        </div>
-                                                        <div class="col-md-6 text-right">
-                                                            <div class="mt-author-name">
-                                                                <span class="font-blue-madison" ng-bind="event.host"></span>
-                                                            </div>
-                                                            <div class="mt-author-datetime font-grey-mint">{{event.date | date:medium}}</div>
-                                                            <div class="mt-author-datetime font-grey-mint">{{event.time | atvTimeline:event.duration}}</div>
-                                                            <div class="mt-author-datetime font-grey-mint"><address>{{event.address}}<address></div>
-                                                            
-                                                            <div class="mt-author-datetime font-grey-mint">{{event.cost | currency:event.currency}}</div>
-                                                            <br />
-                                                            <div class="clearfix"></div>
-                                                            <div class="mt-content border-grey-steel">
-                                                                {{event.downVoteCount}}
-                                                                <a ng-click="events.downVote(event)" href="javascript:;" class="btn btn-circle btn-icon-only red" title="Down Vote">
-                                                                    <span aria-hidden="true" class="icon-dislike"></span>
-                                                                </a>
-                                                                &nbsp;&nbsp;&nbsp;
-                                                                
-                                                                {{event.upVoteCount}}
-                                                                <a ng-click="events.upVote(event)" href="javascript:;" class="btn btn-circle btn-icon-only green" title="Up Vote">
-                                                                    <span aria-hidden="true" class="icon-like"></span>
-                                                                </a>
-                                                            </div>
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <br />
-                                                
-                                            </li>
-                                        </ol>
-                                    </div>
-                                    <!-- .events-content -->
-                                </div>
-                            </div>
-                        </div>
+                        ng-repeat="event in events.events | filter:search | orderBy:events.order | limitTo:events.limitTo">
+                        <event-detail 
+                            single-event="event"
+                            display-type="list"
+                            up-vote="events.upVote(event)"
+                            down-vote="events.downVote(event)"></event-detail>
                     </div>
                 </div>
             </div>

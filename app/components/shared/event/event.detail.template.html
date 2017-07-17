@@ -1,0 +1,57 @@
+<div class="portlet light portlet-fit bordered">
+    <div class="portlet-body">
+        <div class="cd-horizontal-timeline mt-timeline-horizontal">
+            <div class="events-content">
+                <ol style="list-style-type: none;">
+                    <li class="selected">
+                        <div class="mt-title" style="margin-bottom:20px;">
+                            <h2 ng-show="displayType == 'list'" class="mt-content-title"><a ng-href="/app/events-detail/{{event.id}}">{{event.name}}</a></h2>
+                            <h2 ng-hide="displayType == 'list'" class="mt-content-title">{{event.name}}</h2>
+                        </div>
+                        <div class="mt-author">
+                            <div class="row">
+                                <div class="col-md-6">
+                                    <div class="mt-avatar">
+                                        <img ng-src="{{event.image}}" alt="{{event.name}}" style="height:180px; width:300px; margin-bottom:10px;">
+                                    </div>
+                                </div>
+                                <div class="col-md-6 text-right">
+                                    <div class="mt-author-name">
+                                        <span class="font-blue-madison" ng-bind="event.host"></span>
+                                    </div>
+                                    <div class="mt-author-datetime font-grey-mint">{{event.date | date:medium}}</div>
+                                    <div class="mt-author-datetime font-grey-mint">{{event.time | atvTimeline:event.duration}}</div>
+                                    <div class="mt-author-datetime font-grey-mint"><address>{{event.address}}<address></div>
+
+                                    <div class="mt-author-datetime font-grey-mint">{{event.cost | currency:event.currency}}</div>
+                                    <br />
+                                    <div class="clearfix"></div>
+                                    <div class="mt-content border-grey-steel">
+                                        {{event.downVoteCount}}
+                                        <a ng-click="downVote()" href="javascript:;" class="btn btn-circle btn-icon-only red" title="Down Vote">
+                                            <span aria-hidden="true" class="icon-dislike"></span>
+                                        </a>
+                                        &nbsp;&nbsp;&nbsp;
+
+                                        {{event.upVoteCount}}
+                                        <a ng-click="upVote()" href="javascript:;" class="btn btn-circle btn-icon-only green" title="Up Vote">
+                                            <span aria-hidden="true" class="icon-like"></span>
+                                        </a>
+                                    </div>
+                                </div>
+                                <div ng-hide="displayType == 'list'">
+                                    <br />
+                                    <div class="clearfix"></div>
+                                    <div class="mt-content border-grey-steel">
+                                        <p>{{event.details}}</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <!-- .events-content -->
+        </div>
+    </div>
+</div>

@@ -21,7 +21,8 @@
 
     //Contructor function
     function route(
-        $routeProvider) {
+        $routeProvider
+        ) {
         
         $routeProvider
                 .otherwise({
@@ -34,6 +35,34 @@
                     templateUrl: 'components/events/events.list.template.html',
 //                    controller: 'EventsLocalStorageController',
                     controller: 'EventsHttpController',
+                    controllerAs: 'events',
+                    //Data is taking some time to load the content and
+                    //so providing the content from here before displaying the content.
+//                    resolve: {
+//                        events: function(EventsDataService) {
+//                            return EventsDataService
+//                                    .getEventsWithPromise()
+//                                    .then(
+//                                        function (response) {
+//                                            console.log('Got events using promise');
+//                                            return response.data.events; 
+//                                        },
+//                                        function (status) {
+//                                            console.log('resolve events getEventsWithPromise status error', status);
+//                                        }
+//                                    );
+//                        }
+//                    }
+                })
+                .when('/events-order-by-cost', {
+                    order: 'cost',
+                    templateUrl: 'components/events/events.list.template.html',
+                    controller: 'EventsHttpController',
+                    controllerAs: 'events'
+                })
+                .when('/events-top', {
+                    templateUrl: 'components/events/events.list.template.html',
+                    controller: 'EventsHttpController',
                     controllerAs: 'events'
                 })
                 .when('/events-add', {
@@ -43,9 +72,29 @@
                     controllerAs: 'events'
                 })
                 .when('/events-detail/:id', {
-                    templateUrl: 'components/events/events.detail.template.html',
+                    //If both template and templateUrl are set, still template is loaded.
+                    //Does not matter if template or templateUrl is set first.
+                    //template: '<h1>This is loading content from template rather than templateUrl</h1>',
+                    templateUrl: 'components/shared/event/event.detail.layout.template.html',
                     controller: 'EventsHttpController',
-                    controllerAs: 'events'
+                    controllerAs: 'events',
+                    //Data is taking some time to load the content and
+                    //so providing the content from here before displaying the content.
+//                    resolve: {
+//                        event: function($route, EventsDataService) {
+//                            return EventsDataService
+//                                .getEventWithResource($route.current.params.id)
+//                                .$promise
+//                                .then(
+//                                    function (response) {
+//                                        return response.event;
+//                                    },
+//                                    function (response) {
+//                                        console.log('getEventWithResource response error', response);
+//                                    }
+//                                );
+//                        }
+//                    }
                 });
     }
 })();
