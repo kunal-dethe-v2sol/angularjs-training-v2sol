@@ -1,0 +1,27 @@
+{
+  "name": "angularjs-training-v2sol",
+  "version": "1.0.0",
+  "description": "It is a AngularJS Training Events App",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kunal-dethe-v2sol/angularjs-training-v2sol.git"
+  },
+  "author": "Kunal Dethe",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/kunal-dethe-v2sol/angularjs-training-v2sol/issues"
+  },
+  "homepage": "https://github.com/kunal-dethe-v2sol/angularjs-training-v2sol#readme",
+  "devDependencies": {
+    "grunt": "^1.0.1",
+    "grunt-contrib-cssmin": "^2.2.0",
+    "grunt-contrib-jshint": "^1.1.0",
+    "grunt-contrib-nodeunit": "^1.0.0",
+    "grunt-contrib-uglify": "^3.0.1",
+    "grunt-processhtml": "^0.4.1"
+  }
+}
