@@ -58,6 +58,7 @@
         ctrl.getEvents = getEvents;
         ctrl.getEventsUsingCallback = getEventsUsingCallback;
         ctrl.getEventsUsingPromise = getEventsUsingPromise;
+        ctrl.getEventsUsingResource = getEventsUsingResource;
         ctrl.addEvent = addEvent;
         ctrl.getEvent = getEvent;
         ctrl.upVote = upVote;
@@ -88,7 +89,8 @@
             }
             
 //            getEventsUsingCallback();
-            getEventsUsingPromise();
+//            getEventsUsingPromise();
+            getEventsUsingResource();
         }
 
         function getEventsUsingCallback() {
@@ -121,6 +123,20 @@
                 );
             //$log.info('Ended getEvents function');
         }
+        
+        function getEventsUsingResource() {
+            EventsDataService
+                .getEventsWithResource()
+                .$promise
+                .then(
+                    function (response) {
+                        ctrl.events = response.events;
+                    },
+                    function (status) {
+                        $log.error('getEventsWithResource status error', status);
+                    }
+                );
+        }
 
         function addEvent(event) {
             //Setting default values;
@@ -128,9 +144,18 @@
             event.downVoteCount = 0;
 
             //Add the new event in the array of event and the save it on the server side
-            ctrl.events.push(event);
-            //localStorageService.set('events', ctrl.events);
-
+            EventsDataService
+                .addEvent(event)
+                .$promise
+                .then(
+                    function (response) {
+                        ctrl.events.push(event);
+                    },
+                    function (status) {
+                        $log.error('addEvent status error', status);
+                    }
+                );
+            
             //Resetting it back to empty
             ctrl.clearForm();
         }

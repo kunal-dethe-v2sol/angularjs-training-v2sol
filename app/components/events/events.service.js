@@ -17,7 +17,7 @@
     EventsDataService.$inject = [
         '$http',
         '$q',
-        '$resource',
+        '$resource'
     ];
 
     //Contructor function
@@ -29,12 +29,21 @@
         var service = this;
         
         //Variables
-        var resource = $resource('/server/index.php?id=:id', {id: '@id'});
+        var resource = $resource('/server/index.php',
+            {id: '@id'},
+            {
+                getAll: {
+                    method: 'GET',
+                    isArray: false
+                }
+            }
+        );
         
         //Functions
         service.getEventsWithCallback = getEventsWithCallback;
         service.getEventsWithPromise = getEventsWithPromise;
-//        service.addEvent = addEvent;
+        service.getEventsWithResource = getEventsWithResource;
+        service.addEvent = addEvent;
         service.getEventWithResource = getEventWithResource;
         service.updateEventVote = updateEventVote;
         
@@ -77,8 +86,16 @@
             return deferred.promise;
         }
         
+        function getEventsWithResource() {
+            return resource.getAll();
+        }
+        
         function getEventWithResource(id) {
             return resource.get({id:id});
+        }
+        
+        function addEvent(event) {
+            return resource.save(event);
         }
         
         function updateEventVote(type, id) {

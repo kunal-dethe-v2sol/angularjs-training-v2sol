@@ -36,26 +36,32 @@ try {
         }
     } elseif($_SERVER['REQUEST_METHOD'] === 'POST') {
         $fields = array(
-            'name',
-            'date',
-            'time',
-            'duration',
-            'image',
-            'host',
-            'address',
-            'details',
-            'cost',
-            'currency',
-            'upVoteCount',
-            'downVoteCount',
+            'id' => '',
+            'name' => '',
+            'date' => '',
+            'time' => '',
+            'duration' => '',
+            'image' => '',
+            'host' => '',
+            'address' => '',
+            'details' => '',
+            'cost' => '',
+            'currency' => '',
+            'upVoteCount' => 0,
+            'downVoteCount' => 0,
         );
-
-        foreach($fields as $field) {
-            $fields[$field] = isset($_POST[$field]) ? trim($_POST[$field]) : '';
+        
+        foreach($fields as $field=>$value) {
+            $fields[$field] = !empty($requestData->$field) ? trim($requestData->$field) : '';
         }
-            
-        print_r($fields);
-        exit();
+        
+        $events = json_decode(file_get_contents('data.json'));
+        $fields['id'] = count($events) + 1;
+        $events[] = (array) $fields;
+        file_put_contents('data.json', json_encode($events));
+        
+        $result['status'] = 200;
+        $result['message'] = 'OK';
     } else {
         $result['status'] = 403;
         $result['message'] = 'Unauthorised';
