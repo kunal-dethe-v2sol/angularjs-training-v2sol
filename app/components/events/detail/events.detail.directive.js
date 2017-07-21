@@ -22,7 +22,7 @@
         return {
             restrict: 'E',
             //replace: true,
-            templateUrl: 'components/shared/event/event.detail.template.html',
+            templateUrl: 'components/events/detail/events.detail.template.html',
             scope: {
                 event: '=singleEvent',
                 displayType: '@displayType',

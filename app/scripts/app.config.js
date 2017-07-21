@@ -38,7 +38,8 @@
         
         //Common validation messages
         valdrMessageProvider.addMessages({
-            'required': 'This field is required'
+            'required': 'This field is required',
+            'url': 'Please enter valid url'
         });
         
         //To use [[ and ]] instead of {{ and }} as the sybmols to be used for angularjs expressions

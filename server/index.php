@@ -62,6 +62,7 @@ try {
         
         $result['status'] = 200;
         $result['message'] = 'OK';
+        $result['event'] = (array) $fields;
     } else {
         $result['status'] = 403;
         $result['message'] = 'Unauthorised';

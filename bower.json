@@ -1,24 +1,25 @@
 {
-    "name": "events-app",
-    "authors": [],
-    "description": "EventsApp",
-    "main": "",
-    "moduleType": [],
-    "license": "MIT",
-    "homepage": "http://angularjs-training-v2sol/app",
-    "ignore": [
-        "**/.*",
-        "node_modules",
-        "bower_components"
-    ],
-    "dependencies": {
-        "angular": "~1.5.0",
-        "angular-route": "^1.6.4",
-        "angular-local-storage": "^0.6.0",
-        "valdr": "^1.1.6",
-        "angular-resource": "^1.6.5"
-    },
-    "resolutions": {
-        "angular": "1.6.4"
-    }
+  "name": "events-app",
+  "authors": [],
+  "description": "EventsApp",
+  "main": "",
+  "moduleType": [],
+  "license": "MIT",
+  "homepage": "http://angularjs-training-v2sol/app",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components"
+  ],
+  "dependencies": {
+    "angular": "~1.5.0",
+    "angular-route": "^1.6.4",
+    "angular-local-storage": "^0.6.0",
+    "valdr": "^1.1.6",
+    "angular-resource": "^1.6.5",
+    "angular-notify": "^2.5.1"
+  },
+  "resolutions": {
+    "angular": "1.6.4"
+  }
 }

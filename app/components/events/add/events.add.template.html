@@ -24,19 +24,19 @@
                                     <div class="form-group" valdr-form-group>
                                         <label class="col-md-3 control-label">Date<span class="required">*</span></label>
                                         <div class="col-md-9">
-                                            <input readonly ng-model="events.event.date" atv-datepicker type="text" name="date" placeholder="yyyy-mm-dd" class="form-control" id="date" maxlength="10"  />
+                                            <input readonly ng-model="events.event.date" atv-datepicker type="text" name="date" placeholder="yyyy-mm-dd" class="form-control" id="date" maxlength="10" required="required" />
                                         </div>
                                     </div>
                                     <div class="form-group" valdr-form-group>
                                         <label class="col-md-3 control-label">Time<span class="required">*</span></label>
                                         <div class="col-md-9">
-                                            <input ng-model="events.event.time" type="text" name="time" placeholder="Enter Time" class="form-control" id="time" maxlength="8"  />
+                                            <input ng-model="events.event.time" type="text" name="time" placeholder="Enter Time" class="form-control" id="time" maxlength="8" required="required" />
                                         </div>
                                     </div>
                                     <div class="form-group" valdr-form-group>
                                         <label class="col-md-3 control-label">Duration <small>(in hours)</small><span class="required">*</span></label>
                                         <div class="col-md-9">
-                                            <select ng-model="events.event.duration" class="form-control" name="duration" id="duration" >
+                                            <select ng-model="events.event.duration" class="form-control" name="duration" id="duration" required="required">
                                                 <option value="">-Select Duration-</option>
                                                 <option value="1">1</option>
                                                 <option value="2">2</option>
@@ -54,11 +54,11 @@
                                     <div class="form-group" valdr-form-group>
                                         <label class="col-md-3 control-label">Image<span class="required">*</span></label>
                                         <div class="col-md-9">
-                                            <input ng-model="events.event.image" type="url" name="image" placeholder="Enter Image Url" class="form-control" id="image" maxlength="250"  />
+                                            <input ng-model="events.event.image" type="url" name="image" placeholder="Enter Image Url" class="form-control" id="image" maxlength="250" required="required" />
                                         </div>
                                     </div>
                                     <div class="form-group" valdr-form-group>
-                                        <label class="col-md-3 control-label">Preview Image<span class="required">*</span></label>
+                                        <label class="col-md-3 control-label">Preview Image</label>
                                         <div class="col-md-9">
                                             <img ng-src="{{events.event.image}}" style="height:180px; width:300px;" alt="" id="preview_image" />
                                         </div>
@@ -66,25 +66,25 @@
                                     <div class="form-group" valdr-form-group>
                                         <label class="col-md-3 control-label">Host<span class="required">*</span></label>
                                         <div class="col-md-9">
-                                            <input ng-model="events.event.host" type="text" name="host" placeholder="Enter Host of the event" class="form-control" id="host" maxlength="250"  />
+                                            <input ng-model="events.event.host" type="text" name="host" placeholder="Enter Host of the event" class="form-control" id="host" maxlength="250" required="required" />
                                         </div>
                                     </div>
                                     <div class="form-group" valdr-form-group>
                                         <label class="col-md-3 control-label">Address<span class="required">*</span></label>
                                         <div class="col-md-9">
-                                            <input ng-model="events.event.address" type="text" name="address" placeholder="Enter Address" class="form-control" id="address" maxlength="250"  />
+                                            <input ng-model="events.event.address" type="text" name="address" placeholder="Enter Address" class="form-control" id="address" maxlength="250" required="required" />
                                         </div>
                                     </div>
                                     <div class="form-group" valdr-form-group>
                                         <label class="col-md-3 control-label">Cost<span class="required">*</span></label>
                                         <div class="col-md-9">
-                                            <input ng-model="events.event.cost" type="number" name="cost" placeholder="Enter Cost" class="form-control" id="cost"  />
+                                            <input ng-model="events.event.cost" type="number" name="cost" placeholder="Enter Cost" class="form-control" id="cost" required="required" />
                                         </div>
                                     </div>
                                     <div class="form-group" valdr-form-group>
                                         <label class="col-md-3 control-label">Currency<span class="required">*</span></label>
                                         <div class="col-md-9">
-                                            <select ng-model="events.event.currency" class="form-control" name="currency" id="currency" >
+                                            <select ng-model="events.event.currency" class="form-control" name="currency" id="currency" required="required">
                                                 <option value="">-Select Currency-</option>
                                                 <option value="$ ">USD</option>
                                                 <option value="Rs. ">INR</option>
@@ -94,7 +94,7 @@
                                     <div class="form-group" valdr-form-group>
                                         <label class="col-md-3 control-label">Details<span class="required">*</span></label>
                                         <div class="col-md-9">
-                                            <textarea ng-model="events.event.details" name="details" placeholder="Enter Details" class="form-control" id="details" rows="10" columns="500" maxlength="5000" ></textarea>
+                                            <textarea ng-model="events.event.details" name="details" placeholder="Enter Details" class="form-control" id="details" rows="10" columns="500" maxlength="5000" required="required"></textarea>
                                         </div>
                                     </div>
                                     <div class="form-actions fluid">

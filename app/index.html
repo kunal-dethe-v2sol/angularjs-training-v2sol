@@ -54,6 +54,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <link href="../assets/global/css/plugins.min.css" rel="stylesheet" type="text/css" />
         <!-- END THEME GLOBAL STYLES -->
         <!-- BEGIN PAGE LEVEL STYLES -->
+        <link href="../bower_components/angular-notify/dist/angular-notify.css" rel="stylesheet" type="text/css" />
         <!--<link href="../assets/apps/css/events.min.css" rel="stylesheet" type="text/css" />-->
         <link href="../assets/apps/css/events.css" rel="stylesheet" type="text/css" />
         <!-- END PAGE LEVEL STYLES -->
@@ -133,6 +134,7 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="../bower_components/valdr/valdr.min.js"></script>
         <script src="../bower_components/valdr/valdr-message.min.js"></script>
         <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
+        <script src="../bower_components/angular-notify/dist/angular-notify.js"></script>
         <!-- /build -->
         
         <!-- build:remove -->
@@ -145,10 +147,11 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--end : configuration-->
         
         <!--start : shared-->
+        <!--Component-->
+        
         <!--Header-->
         <!--<script src="components/shared/header/shared.header.controller.js"></script>-->
         <script src="components/shared/header/shared.header.directive.js"></script>
-        <script src="components/shared/event/event.detail.directive.js"></script>
         
         <!--Sidebar-->
         <!--<script src="components/shared/sidebar/left/shared.sidebar.left.controller.js"></script>-->
@@ -168,8 +171,11 @@ License: You must have a valid license purchased only from themeforest(the above
         <!--end : common-->
         
         <!--start : components-->
-        <script src="components/events/events.localstorage.controller.js"></script>
-        <script src="components/events/events.http.controller.js"></script>
+        <script src="components/events/list/events.localstorage.controller.js"></script>
+        <script src="components/events/list/events.list.controller.js"></script>
+        <script src="components/events/add/events.add.controller.js"></script>
+        <script src="components/events/detail/events.detail.controller.js"></script>
+        <script src="components/events/detail/events.detail.directive.js"></script>
         <script src="components/events/events.validation.js"></script>
         <script src="components/events/events.service.js"></script>
         <!--end : components-->
