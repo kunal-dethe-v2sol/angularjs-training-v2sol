@@ -16,6 +16,7 @@
                 'LocalStorageModule',
                 'valdr',
                 'ngResource',
-                'cgNotify'
+                'cgNotify',
+                'restangular'
             ]);
 })();

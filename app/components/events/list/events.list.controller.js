@@ -50,6 +50,7 @@
         ctrl.getEventsUsingCallback = getEventsUsingCallback;
         ctrl.getEventsUsingPromise = getEventsUsingPromise;
         ctrl.getEventsUsingResource = getEventsUsingResource;
+        ctrl.getEventsUsingRestangular = getEventsUsingRestangular;
         ctrl.upVote = upVote;
         ctrl.downVote = downVote;
         
@@ -78,7 +79,8 @@
             
 //            getEventsUsingCallback();
 //            getEventsUsingPromise();
-            getEventsUsingResource();
+//            getEventsUsingResource();
+            getEventsUsingRestangular();
         }
 
         function getEventsUsingCallback() {
@@ -103,6 +105,20 @@
         function getEventsUsingResource() {
             EventsDataService
                 .getEventsWithResource()
+                .$promise
+                .then(
+                    function (response) {
+                        ctrl.events = response.events;
+                    },
+                    function (status) {
+                        $log.error('getEventsWithResource status error', status);
+                    }
+                );
+        }
+        
+        function getEventsUsingRestangular() {
+            EventsDataService
+                .getEventsWithRestangular()
                 .$promise
                 .then(
                     function (response) {
