@@ -12,15 +12,13 @@
     "bower_components"
   ],
   "dependencies": {
-    "angular": "~1.5.0",
-    "angular-route": "^1.6.4",
+    "angular": "~1.6.0",
+    "angular-route": "^1.6.5",
     "angular-local-storage": "^0.6.0",
     "valdr": "^1.1.6",
     "angular-resource": "^1.6.5",
     "angular-notify": "^2.5.1",
-    "restangular": "^1.6.1"
-  },
-  "resolutions": {
-    "angular": "1.5.11"
+    "restangular": "^1.6.1",
+    "lodash": "^4.17.4"
   }
 }

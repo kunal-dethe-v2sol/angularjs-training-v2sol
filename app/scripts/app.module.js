@@ -13,10 +13,10 @@
     angular
             .module('eventsApp', [
                 'ngRoute',
+                'ngResource',
                 'LocalStorageModule',
                 'valdr',
-                'ngResource',
                 'cgNotify',
-                'restangular'
+                'restangular',
             ]);
 })();

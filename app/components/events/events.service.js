@@ -79,12 +79,12 @@
             return deferred.promise;
         }
         
-        function getEventsWithRestangular() {
-            console.log(Restangular.all('users'));
-        }
-        
         function getEventsWithResource() {
             return resource.getAll();
+        }
+        
+        function getEventsWithRestangular() {
+            return Restangular.all('server/index.php').getList();
         }
         
         function getEventWithResource(id) {
