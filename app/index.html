@@ -86,7 +86,8 @@ License: You must have a valid license purchased only from themeforest(the above
             <!-- END SIDEBAR -->
             
             <!-- BEGIN CONTENT -->
-            <div ng-view></div>
+            <!--<div ng-view></div>-->
+            <div ui-view="root"></div>
             <!-- END CONTENT -->
         </div>
         <!-- END CONTAINER -->
@@ -134,9 +135,10 @@ License: You must have a valid license purchased only from themeforest(the above
         <script src="../bower_components/valdr/valdr.min.js"></script>
         <script src="../bower_components/valdr/valdr-message.min.js"></script>
         <script src="../bower_components/angular-resource/angular-resource.min.js"></script>
-        <script src="../bower_components/angular-notify/dist/angular-notify.js"></script>
+        <script src="../bower_components/angular-notify/dist/angular-notify.min.js"></script>
         <script src="../bower_components/lodash/dist/lodash.min.js"></script>
         <script src="../bower_components/restangular/dist/restangular.min.js"></script>
+        <script src="../bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
         <!-- /build -->
         
         <!-- build:remove -->

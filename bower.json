@@ -19,6 +19,7 @@
     "angular-resource": "^1.6.5",
     "angular-notify": "^2.5.1",
     "restangular": "^1.6.1",
-    "lodash": "^4.17.4"
+    "lodash": "^4.17.4",
+    "angular-ui-router": "^1.0.5"
   }
 }

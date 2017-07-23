@@ -21,7 +21,9 @@
         '$locale',
         '$route',
         '$location',
-        'notify'
+        'notify',
+        '$stateParams',
+        '$state'
     ];
 
     //Contructor function
@@ -31,7 +33,9 @@
         $locale,
         $route,
         $location,
-        notify) {
+        notify,
+        $stateParams,
+        $state) {
 
         var ctrl = this;
 
@@ -63,24 +67,33 @@
         }
         
         function reload() {
-            $route.reload();
+//            $route.reload();
+            $state.reload();
         }
         
         function getEvents() {
             //Default value is set from the app.route.php file for the listing page.
-            if($route.current.order) {
-                ctrl.order = $route.current.order;
+//            if($route.current.order) {
+//                ctrl.order = $route.current.order;
+//            }
+
+            if($stateParams.order) {
+                ctrl.order = $stateParams.order;
             }
             
             //Default value is set from the query string for the listing page.
-            if($route.current.params.limitTo) {
-                ctrl.limitTo = $route.current.params.limitTo;
+//            if($route.current.params.limitTo) {
+//                ctrl.limitTo = $route.current.params.limitTo;
+//            }
+            
+            if($stateParams.limitTo) {
+                ctrl.limitTo = $stateParams.limitTo;
             }
             
 //            getEventsUsingCallback();
 //            getEventsUsingPromise();
-//            getEventsUsingResource();
-            getEventsUsingRestangular();
+            getEventsUsingResource();
+//            getEventsUsingRestangular();
         }
 
         function getEventsUsingCallback() {

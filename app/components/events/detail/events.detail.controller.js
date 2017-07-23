@@ -20,7 +20,9 @@
         '$log',
         '$routeParams',
         '$route',
-        'notify'
+        'notify',
+        '$stateParams',
+        'event'
     ];
 
     //Contructor function
@@ -29,13 +31,17 @@
         $log,
         $routeParams,
         $route,
-        notify) {
+        notify,
+        $stateParams,
+        event) {
 
         var ctrl = this;
 
         //Variables
         //To load via route resolve property.
-        ctrl.event = $route.current.locals.event;
+        ctrl.event_id = 0;
+//        ctrl.event = $route.current.locals.event;
+        ctrl.event = event;
         
         //Functions
         ctrl.init = init;
@@ -48,21 +54,23 @@
 
         //Function Definitions
         function init() {
-            getEvent();
+            //getEvent();
         }
 
         function getEvent() {
-            //Only provides the route params.
-            ctrl.routeParams_id = $routeParams.id;
+//            //Only provides the route params.
+//            ctrl.routeParams_id = $routeParams.id;
+//            
+//            //Provides all the params (route and querystring).
+//            ctrl.route_current_params_id = $route.current.params.id;
+//            
+//            //Only provides the route params.
+//            ctrl.route_current_pathParams_id = $route.current.pathParams.id;
             
-            //Provides all the params (route and querystring).
-            ctrl.route_current_params_id = $route.current.params.id;
-            
-            //Only provides the route params.
-            ctrl.route_current_pathParams_id = $route.current.pathParams.id;
+            ctrl.event_id = $stateParams.event_id;
             
             EventsDataService
-                .getEventWithResource(ctrl.routeParams_id)
+                .getEventWithResource(ctrl.event_id)
                 .$promise
                 .then(
                     function (response) {

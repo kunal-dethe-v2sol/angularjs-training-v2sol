@@ -18,5 +18,6 @@
                 'valdr',
                 'cgNotify',
                 'restangular',
+                'ui.router',
             ]);
 })();
